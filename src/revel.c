@@ -1,6 +1,8 @@
 #include <revel.h>
 #include <stdio.h>
 
+#include <rs_manager.h>
+
 SDL_Window* window;
 SDL_Renderer* renderer;
 
@@ -32,10 +34,17 @@ int revel_init(void) {
 		return 0;
 	}
 
+	printf("Init resource manager.\n");
+	rs_manager_init();
+
 	return 1;
 }
 
 void revel_close(void) {
+
+	printf("Destroy resource manager\n");
+	rs_manager_close();
+
 	printf("Destroy renderer.\n");
 	SDL_DestroyRenderer(renderer);
 	printf("Destroy window.\n");
