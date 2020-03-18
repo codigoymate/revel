@@ -2,11 +2,14 @@
 #include <stdio.h>
 
 #include <rs_manager.h>
+#include <SDL2/SDL_image.h>
 
 SDL_Window* window;
 SDL_Renderer* renderer;
 
 int revel_init(void) {
+
+	int imgFlags = IMG_INIT_PNG;
 
 	printf("Init SDL.\n");
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -34,6 +37,18 @@ int revel_init(void) {
 		return 0;
 	}
 
+	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
+    //Initialize PNG loading
+    printf("Init PNG loading.\n");
+    if( !( IMG_Init( imgFlags ) & imgFlags ) )
+    {
+        printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+		SDL_Quit();
+    }
+
 	printf("Init resource manager.\n");
 	rs_manager_init();
 
@@ -51,5 +66,6 @@ void revel_close(void) {
 	SDL_DestroyWindow(window);
 
 	printf("Close SDL.\n");
+	IMG_Quit();
 	SDL_Quit();
 }
