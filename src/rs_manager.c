@@ -45,7 +45,9 @@ SDL_Texture* rs_manager_load_texture(char* str) {
 	char full[80];
 	SDL_Texture* texture;
 
-	sprintf(full, "assets/%s/.png", str);
+	sprintf(full, "assets/%s.png", str);
+
+	printf("Loading \"%s\".\n", full);
 
 	SDL_Surface* surface = IMG_Load(full);
 	if (surface == NULL) {

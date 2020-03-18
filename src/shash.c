@@ -96,6 +96,7 @@ void str_hash_table_put(str_hash_table_t* ht, char* key, void* value) {
 
 void* str_hash_table_get(str_hash_table_t* ht, char* key) {
 	struct str_hash_node_t* node = s_get_node(ht, key);
+	if (node == NULL) return NULL;
 	return node->value;
 }
 
