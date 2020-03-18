@@ -3,7 +3,7 @@ OBJ = $(addprefix obj/, $(notdir $(SRC:.c=.o)))
 
 INCLUDE = -I ./include
 CFLAGS = -g -Wall -pedantic
-LFLAGS = -lSDL2
+LFLAGS = -lSDL2 -lSDL2_image
 
 BIN = ./bin/revel
 

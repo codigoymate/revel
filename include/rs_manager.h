@@ -6,6 +6,6 @@
 void rs_manager_init(void);
 void rs_manager_close(void);
 
-SDL_Texture* rs_manager_get_texture(const char* str);
+SDL_Texture* rs_manager_get_texture(char* str);
 
 #endif
