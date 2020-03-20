@@ -46,3 +46,8 @@ void mgr_add_component(unsigned int e, component_t* comp) {
 	hash_table_t* components = hash_table_get(entities, e);
 	hash_table_put(components, comp->id, comp);
 }
+
+int mgr_has_component(unsigned int e, unsigned int c) {
+	hash_table_t* components = (hash_table_t*)hash_table_get(entities, e);
+	return hash_table_get(components, c) != NULL;
+}
