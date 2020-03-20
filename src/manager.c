@@ -13,6 +13,9 @@ void clean_components(hash_table_t* comp) {
 			hash_table_get(comp, hash_iterator_next(iter))
 		);
 	}
+
+	// Remove itarator
+	hash_iterator_delete(iter);
 } 
 
 void mgr_init(void) {
@@ -29,6 +32,9 @@ void mgr_close(void) {
 		clean_components(components);
 		hash_table_delete(components);
 	}
+
+	// Remove itarator
+	hash_iterator_delete(iter);
 
 	// Remove entities hash table
 	hash_table_delete(entities);
