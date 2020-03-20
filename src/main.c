@@ -2,9 +2,12 @@
 
 #include <rs_manager.h>
 #include <manager.h>
+#include <components.h>
 
 int main() {
 	
+    unsigned int ent;
+
 	int quit = 0;
 	SDL_Texture* circle;
 	SDL_Event e;
@@ -13,7 +16,8 @@ int main() {
 
 	circle = rs_manager_get_texture("circle");
 
-    printf("Created %d\n", mgr_new_entity());
+    ent = mgr_new_entity();
+    mgr_add_component(ent, transform_new(100, 100, 32, 32));
 
 	while(!quit)
     {

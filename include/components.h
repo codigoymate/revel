@@ -15,6 +15,6 @@ typedef struct {
 	int w, h;
 } transform_t;
 
-transform_t* transform_new(float x, float y, int w, int h);
+component_t* transform_new(float x, float y, int w, int h);
 
 #endif
