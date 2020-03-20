@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include <rs_manager.h>
+#include <manager.h>
 #include <SDL2/SDL_image.h>
 
 SDL_Window* window;
@@ -52,10 +53,16 @@ int revel_init(void) {
 	printf("Init resource manager.\n");
 	rs_manager_init();
 
+	printf("Init entity manager.\n");
+	mgr_init();
+
 	return 1;
 }
 
 void revel_close(void) {
+
+	printf("Destroy entity manager.\n");
+	mgr_close();
 
 	printf("Destroy resource manager\n");
 	rs_manager_close();
