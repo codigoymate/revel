@@ -1,6 +1,7 @@
 #include <revel.h>
 
 #include <rs_manager.h>
+#include <manager.h>
 
 int main() {
 	
@@ -11,6 +12,8 @@ int main() {
 	revel_init();
 
 	circle = rs_manager_get_texture("circle");
+
+    printf("Created %d\n", mgr_new_entity());
 
 	while(!quit)
     {
