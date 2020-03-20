@@ -197,3 +197,6 @@ void* iterator_next(iterator_t* iter) {
 	return data;
 }
 
+void iterator_restart(iterator_t* iter) {
+	iter->node = iter->list->first;
+}

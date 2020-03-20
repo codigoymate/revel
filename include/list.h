@@ -40,4 +40,6 @@ void iterator_delete(iterator_t* iter);
 int iterator_has_next(iterator_t* iter);
 void* iterator_next(iterator_t* iter);
 
+void iterator_restart(iterator_t* iter);
+
 #endif
