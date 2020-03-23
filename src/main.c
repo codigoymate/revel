@@ -4,20 +4,25 @@
 #include <manager.h>
 #include <components.h>
 
+void render(void) {
+    
+}
+
 int main() {
 	
     unsigned int ent;
 
 	int quit = 0;
-	SDL_Texture* circle;
 	SDL_Event e;
 
 	revel_init();
 
-	circle = rs_manager_get_texture("circle");
+    mgr_add_system("render", TRANSFORM | RENDER, render);
 
     ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(100, 100, 32, 32));
+    mgr_add_component(ent, render_new("circle"));
+    mgr_register(ent);
 
 	while(!quit)
     {
@@ -35,7 +40,8 @@ int main() {
         SDL_RenderClear(renderer);
 
         //Render texture to screen
-        SDL_RenderCopy(renderer, circle, NULL, NULL);
+        //SDL_RenderCopy(renderer, circle, NULL, NULL);
+        mgr_process_systems();
 
         //Update screen
         SDL_RenderPresent(renderer);
