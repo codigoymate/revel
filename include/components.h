@@ -3,6 +3,7 @@
 
 #define TRANSFORM		1
 #define RENDER			2
+#define VELOCITY		4
 
 #include <SDL2/SDL.h>
 
@@ -26,5 +27,13 @@ typedef struct {
 } render_t;
 
 component_t* render_new(char* sprite);
+
+// Movement: Velocity
+typedef struct {
+	component_t base;
+	float x, y;
+} velocity_t;
+
+component_t* velocity_new(float x, float y);
 
 #endif

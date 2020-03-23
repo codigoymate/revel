@@ -6,7 +6,7 @@
 #include <string.h>
 
 typedef struct {
-	void (*process_ptr)(void);
+	void (*process_ptr)(iterator_t*);
 	list_t* list;
 	iterator_t* iterator;
 	unsigned int flags;
@@ -85,6 +85,11 @@ int mgr_has_component(unsigned int e, unsigned int c) {
 	return hash_table_get(components, c) != NULL;
 }
 
+component_t* mgr_get_component(unsigned int e, unsigned int c) {
+	hash_table_t* components = (hash_table_t*)hash_table_get(entities, e);
+	return (component_t*)hash_table_get(components, c);
+}
+
 void mgr_register(unsigned int e) {
 	iterator_restart(system_iter);
 	while (iterator_has_next(system_iter)) {
@@ -106,7 +111,7 @@ void mgr_register(unsigned int e) {
 	}
 }
 
-void mgr_add_system(char* name, unsigned int flags, void(*process_ptr)(void)) {
+void mgr_add_system(char* name, unsigned int flags, void(*process_ptr)(iterator_t*)) {
 	system_t* sys = (system_t*) malloc(sizeof(system_t));
 	sys->name = strdup(name);
 	sys->flags = flags;
@@ -121,6 +126,7 @@ void mgr_add_system(char* name, unsigned int flags, void(*process_ptr)(void)) {
 void mgr_process_systems(void) {
 	iterator_restart(system_iter);
 	while (iterator_has_next(system_iter)) {
-		((system_t*)iterator_next(system_iter))->process_ptr();
+		system_t* sys = (system_t*)iterator_next(system_iter);
+		sys->process_ptr(sys->iterator);
 	}
 }

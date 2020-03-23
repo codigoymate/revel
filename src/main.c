@@ -1,12 +1,8 @@
 #include <revel.h>
 
-#include <rs_manager.h>
 #include <manager.h>
 #include <components.h>
-
-void render(void) {
-    
-}
+#include <render.h>
 
 int main() {
 	
@@ -17,10 +13,15 @@ int main() {
 
 	revel_init();
 
-    mgr_add_system("render", TRANSFORM | RENDER, render);
+    mgr_add_system("render", TRANSFORM | RENDER, render); // render.h
 
     ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(100, 100, 32, 32));
+    mgr_add_component(ent, transform_new(500, 100, 32, 32));
+    mgr_add_component(ent, render_new("circle"));
+    mgr_register(ent);
+
+    ent = mgr_new_entity();
+    mgr_add_component(ent, transform_new(300, 200, 64, 64));
     mgr_add_component(ent, render_new("circle"));
     mgr_register(ent);
 

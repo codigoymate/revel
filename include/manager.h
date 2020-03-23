@@ -19,8 +19,9 @@ void mgr_register(unsigned int);
 
 /** Returns val != 0 if entity e has component c */
 int mgr_has_component(unsigned int e, unsigned int c);
+component_t* mgr_get_component(unsigned int e, unsigned int c);
 
-void mgr_add_system(char* name, unsigned int flags, void(*process_ptr)(void));
+void mgr_add_system(char* name, unsigned int flags, void(*process_ptr)(iterator_t*));
 
 void mgr_process_systems(void);
 
