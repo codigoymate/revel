@@ -3,6 +3,7 @@
 #include <manager.h>
 #include <components.h>
 #include <render.h>
+#include <movement.h>
 
 int main() {
 	
@@ -14,10 +15,12 @@ int main() {
 	revel_init();
 
     mgr_add_system("render", TRANSFORM | RENDER, render); // render.h
+    mgr_add_system("velocity", TRANSFORM | VELOCITY, velocity); // movement.h
 
     ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(500, 100, 32, 32));
     mgr_add_component(ent, render_new("circle"));
+    mgr_add_component(ent, velocity_new(2.0f, 2.0f));
     mgr_register(ent);
 
     ent = mgr_new_entity();
