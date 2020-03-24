@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 
 extern SDL_Renderer* renderer;
+extern double delta_time;
 
 int revel_init(void);
 

@@ -11,6 +11,8 @@ int main() {
 
 	int quit = 0;
 	SDL_Event e;
+    Uint64 now = SDL_GetPerformanceCounter();
+    Uint64 last = 0;
 
 	revel_init();
 
@@ -20,7 +22,7 @@ int main() {
     ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(500, 100, 32, 32));
     mgr_add_component(ent, render_new("circle"));
-    mgr_add_component(ent, velocity_new(2.0f, 2.0f));
+    mgr_add_component(ent, velocity_new(20.0f, 15.0f));
     mgr_register(ent);
 
     ent = mgr_new_entity();
@@ -40,11 +42,16 @@ int main() {
             }
         }
 
+        last = now;
+        now = SDL_GetPerformanceCounter();
+
+        delta_time = (double)((now - last) * 1000.0 / (double) SDL_GetPerformanceFrequency());
+        delta_time *= 0.001;
+
         //Clear screen
         SDL_RenderClear(renderer);
 
-        //Render texture to screen
-        //SDL_RenderCopy(renderer, circle, NULL, NULL);
+        // Systems process
         mgr_process_systems();
 
         //Update screen

@@ -7,6 +7,7 @@
 
 SDL_Window* window;
 SDL_Renderer* renderer;
+double delta_time;
 
 int revel_init(void) {
 

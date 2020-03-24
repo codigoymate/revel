@@ -2,6 +2,7 @@
 
 #include <components.h>
 #include <manager.h>
+#include <revel.h>
 
 void velocity(iterator_t* iter) {
 	iterator_restart(iter);
@@ -10,7 +11,7 @@ void velocity(iterator_t* iter) {
 		transform_t* tc = (transform_t*) mgr_get_component(e, TRANSFORM);
 		velocity_t* vc = (velocity_t*) mgr_get_component(e, VELOCITY);
 
-		tc->x += vc->x;
-		tc->y += vc->y;
+		tc->x += vc->x * delta_time;
+		tc->y += vc->y * delta_time;
 	}
 }
