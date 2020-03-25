@@ -9,30 +9,41 @@
 #include <SDL2/SDL_image.h>
 
 
-str_hash_table_t* ht;
+str_hash_table_t* textures;
+str_hash_table_t* fonts;
 
 SDL_Texture* rs_manager_load_texture(char* str);
 
 void rs_manager_init(void) {
-	ht = str_hash_table_new(1000);
+	textures = str_hash_table_new(1000);
+	fonts = str_hash_table_new(10);
 }
 
 void rs_manager_close(void) {
-	str_hash_iterator_t* iter = str_hash_iterator_new(ht);
-
+	str_hash_iterator_t* iter = str_hash_iterator_new(textures);
 	while (str_hash_iterator_has_next(iter)) {
 		char *key = str_hash_iterator_next(iter);
 
-		printf("Clean \"%s\".\n", key);
-		SDL_DestroyTexture((SDL_Texture*)str_hash_table_get(ht, key));
+		printf("Clean texture \"%s\".\n", key);
+		SDL_DestroyTexture((SDL_Texture*)str_hash_table_get(textures, key));
 	}
+	str_hash_iterator_delete(iter);
+	str_hash_table_delete(textures);
 
-	str_hash_table_delete(ht);
+	iter = str_hash_iterator_new(fonts);
+	while (str_hash_iterator_has_next(iter)) {
+		char *key = str_hash_iterator_next(iter);
+
+		printf("Clean font \"%s\".\n", key);
+		free((bmp_font_t*)str_hash_table_get(fonts, key));
+	}
+	str_hash_iterator_delete(iter);
+	str_hash_table_delete(fonts);
 }
 
 SDL_Texture* rs_manager_get_texture(char* str) {
 
-	SDL_Texture* texture = (SDL_Texture*)str_hash_table_get(ht, str);
+	SDL_Texture* texture = (SDL_Texture*)str_hash_table_get(textures, str);
 
 	if (texture == NULL) {
 		texture = rs_manager_load_texture(str);
@@ -63,7 +74,15 @@ SDL_Texture* rs_manager_load_texture(char* str) {
 
 	SDL_FreeSurface(surface);
 
-	str_hash_table_put(ht, str, texture);
+	str_hash_table_put(textures, str, texture);
 
 	return texture;
+}
+
+void rs_manager_add_bmp_font(char* name, bmp_font_t* font) {
+	str_hash_table_put(fonts, name, font);
+}
+
+bmp_font_t* rs_manager_get_bmp_font(char* name) {
+	return (bmp_font_t*) str_hash_table_get(fonts, name);
 }
