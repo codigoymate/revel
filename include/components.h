@@ -5,7 +5,11 @@
 #define RENDER			2
 #define VELOCITY		4
 
+#define RENDER_TEXTURE		0
+#define RENDER_STRING		1
+
 #include <SDL2/SDL.h>
+#include <bmp_font.h>
 
 // Base
 typedef struct {
@@ -21,12 +25,27 @@ typedef struct {
 
 component_t* transform_new(float x, float y, int w, int h);
 
+/********************************************************/
+// Render Base
 typedef struct {
 	component_t base;
-	SDL_Texture* texture;
+	int type;
 } render_t;
 
-component_t* render_new(char* sprite);
+typedef struct {
+	render_t base;
+	SDL_Texture* texture;
+} render_texture_t;
+
+component_t* render_texture_new(char* texture);
+
+typedef struct {
+	render_t base;
+	bmp_font_t* font;
+	char string[50];
+} render_string_t;
+
+component_t* render_string_new(char* font, char* string);
 
 // Movement: Velocity
 typedef struct {

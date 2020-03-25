@@ -14,12 +14,23 @@ component_t* transform_new(float x, float y, int w, int h) {
 	return (component_t*)comp;
 }
 
-component_t* render_new(char* sprite) {
-	render_t* comp = (render_t*) malloc(sizeof(render_t));
-	comp->base.id = RENDER;
+component_t* render_texture_new(char* sprite) {
+	render_texture_t* comp = (render_texture_t*) malloc(sizeof(render_texture_t));
+	comp->base.base.id = RENDER;
+	comp->base.type = RENDER_TEXTURE;
 	comp->texture = rs_manager_get_texture(sprite);
 
 	return (component_t*)comp;
+}
+
+component_t* render_string_new(char* font, char* string) {
+	render_string_t* comp = (render_string_t*) malloc(sizeof(render_string_t));
+	comp->base.base.id = RENDER;
+	comp->base.type = RENDER_STRING;
+	comp->font = rs_manager_get_bmp_font(font);
+	strcpy(comp->string, string);
+
+	return (component_t*) comp;
 }
 
 component_t* velocity_new(float x, float y) {

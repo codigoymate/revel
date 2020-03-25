@@ -16,18 +16,25 @@ int main() {
 
 	revel_init();
 
+    install_bmp_font("font", 8, 8, 1, 1, "font");
+
     mgr_add_system("render", TRANSFORM | RENDER, render); // render.h
     mgr_add_system("velocity", TRANSFORM | VELOCITY, velocity); // movement.h
 
     ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(500, 100, 32, 32));
-    mgr_add_component(ent, render_new("circle"));
+    mgr_add_component(ent, render_texture_new("circle"));
     mgr_add_component(ent, velocity_new(20.0f, 15.0f));
     mgr_register(ent);
 
     ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(300, 200, 64, 64));
-    mgr_add_component(ent, render_new("circle"));
+    mgr_add_component(ent, render_texture_new("circle"));
+    mgr_register(ent);
+
+    ent = mgr_new_entity();
+    mgr_add_component(ent, transform_new(100, 400, 16, 20));
+    mgr_add_component(ent, render_string_new("font", "Hola que tal"));
     mgr_register(ent);
 
 	while(!quit)
