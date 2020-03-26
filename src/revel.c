@@ -3,6 +3,7 @@
 
 #include <rs_manager.h>
 #include <manager.h>
+#include <input.h>
 #include <SDL2/SDL_image.h>
 
 SDL_Window* window;
@@ -56,6 +57,9 @@ int revel_init(void) {
 
 	printf("Init entity manager.\n");
 	mgr_init();
+
+	printf("Init input.\n");
+	input_init();
 
 	return 1;
 }
