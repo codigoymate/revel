@@ -8,3 +8,7 @@ void input_init(void) {
 	key_status.up = 0;
 	key_status.down = 0;
 }
+
+void input(iterator_t* iter) {
+	
+}
