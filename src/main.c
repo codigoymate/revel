@@ -16,12 +16,14 @@ void load(void) {
     mgr_add_system("control", TRANSFORM | VELOCITY | CONTROL, control); // input.h
     
 
-    /*ent = mgr_new_entity();
+    ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(500, 100, 32, 32));
     mgr_add_component(ent, render_texture_new("circle"));
-    mgr_add_component(ent, velocity_new(20.0f, 15.0f));
+    mgr_add_component(ent, velocity_new(0.0f, 0.0f));
+    mgr_add_component(ent, control_new());
     mgr_register(ent);
 
+    /*
     ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(300, 200, 64, 64));
     mgr_add_component(ent, render_texture_new("circle"));
