@@ -13,7 +13,7 @@ void load(void) {
 
     mgr_add_system("render", TRANSFORM | RENDER, render); // render.h
     mgr_add_system("velocity", TRANSFORM | VELOCITY, velocity); // movement.h
-    mgr_add_system("control", TRANSFORM | VELOCITY | CONTROL, control) // input.h
+    mgr_add_system("control", TRANSFORM | VELOCITY | CONTROL, control); // input.h
     
 
     /*ent = mgr_new_entity();

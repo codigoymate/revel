@@ -4,6 +4,7 @@
 #define TRANSFORM		1
 #define RENDER			2
 #define VELOCITY		4
+#define CONTROL			8
 
 #define RENDER_TEXTURE		0
 #define RENDER_STRING		1
@@ -54,5 +55,11 @@ typedef struct {
 } velocity_t;
 
 component_t* velocity_new(float x, float y);
+
+typedef struct {
+	component_t base;
+} control_t;
+
+component_t* control_new(void);
 
 #endif

@@ -9,6 +9,6 @@ void input_init(void) {
 	key_status.down = 0;
 }
 
-void input(iterator_t* iter) {
-	
+void control(iterator_t* iter) {
+
 }
