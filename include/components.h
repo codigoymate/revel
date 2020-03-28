@@ -5,6 +5,7 @@
 #define RENDER			2
 #define VELOCITY		4
 #define CONTROL			8
+#define WALL			16
 
 #define RENDER_TEXTURE		0
 #define RENDER_STRING		1
@@ -61,5 +62,11 @@ typedef struct {
 } control_t;
 
 component_t* control_new(void);
+
+typedef struct {
+	component_t base;
+} wall_t;
+
+component_t* wall_new(void);
 
 #endif

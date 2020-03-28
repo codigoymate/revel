@@ -48,3 +48,10 @@ component_t* control_new(void) {
 
 	return (component_t*)comp;
 }
+
+component_t* wall_new(void) {
+	wall_t* comp = (wall_t*) malloc(sizeof(wall_t));
+	comp->base.id = WALL;
+
+	return (component_t*)comp;
+}

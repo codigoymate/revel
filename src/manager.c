@@ -127,6 +127,7 @@ void mgr_process_systems(void) {
 	iterator_restart(system_iter);
 	while (iterator_has_next(system_iter)) {
 		system_t* sys = (system_t*)iterator_next(system_iter);
-		sys->process_ptr(sys->iterator);
+		if (sys->process_ptr != NULL)
+			sys->process_ptr(sys->iterator);
 	}
 }
