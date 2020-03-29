@@ -169,3 +169,13 @@ char* str_hash_iterator_next(str_hash_iterator_t* iter) {
 
 	return key;
 }
+
+void str_hash_iterator_restart(str_hash_iterator_t* iter) {
+	iter->index = 0;
+	iter->node = iter->ht->table[0];
+	while (iter->node == NULL && iter->index < iter->ht->size) {
+		iter->index ++; if (iter->index >= iter->ht->size) break;
+		iter->node = iter->ht->table[iter->index];
+	}
+
+}

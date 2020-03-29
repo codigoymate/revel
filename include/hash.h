@@ -94,4 +94,6 @@ void str_hash_iterator_delete(str_hash_iterator_t* iter);
 int str_hash_iterator_has_next(str_hash_iterator_t* iter);
 char* str_hash_iterator_next(str_hash_iterator_t* iter);
 
+void str_hash_iterator_restart(str_hash_iterator_t* iter);
+
 #endif

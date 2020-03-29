@@ -3,12 +3,13 @@
 
 #define ENTITY_MAX		1000
 #define COMPONENT_MAX	10
+#define SYSTEM_MAX		10
 
 #include <list.h>
 #include <components.h>
 
-extern list_t* systems;
-extern iterator_t* system_iter;
+//extern list_t* systems;
+//extern iterator_t* system_iter;
 
 void mgr_init(void);
 void mgr_close(void);
