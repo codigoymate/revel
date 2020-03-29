@@ -26,7 +26,7 @@ void load(void) {
     mgr_register(ent);
 
     ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(600, 200, 64, 64));
+    mgr_add_component(ent, transform_new(600, 600, 64, 64));
     mgr_add_component(ent, render_texture_new("simple_grass"));
     mgr_add_component(ent, wall_new());
     mgr_register(ent);
