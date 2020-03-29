@@ -134,3 +134,8 @@ void mgr_process_systems(void) {
 			sys->process_ptr(sys->iterator);
 	}
 }
+
+iterator_t* mgr_get_system_iterator(char* name) {
+	system_t* system = (system_t*) str_hash_table_get(systems, name);
+	return system->iterator;
+}

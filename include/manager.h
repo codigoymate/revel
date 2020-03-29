@@ -24,6 +24,8 @@ component_t* mgr_get_component(unsigned int e, unsigned int c);
 
 void mgr_add_system(char* name, unsigned int flags, void(*process_ptr)(iterator_t*));
 
+iterator_t* mgr_get_system_iterator(char* name);
+
 void mgr_process_systems(void);
 
 #endif
