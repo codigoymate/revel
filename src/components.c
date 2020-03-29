@@ -55,3 +55,10 @@ component_t* wall_new(void) {
 
 	return (component_t*)comp;
 }
+
+component_t* solid_new(void) {
+	solid_t* comp = (solid_t*) malloc(sizeof(solid_t));
+	comp->base.id = SOLID;
+
+	return (component_t*) comp;
+}
