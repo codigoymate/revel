@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <bmp_font.h>
+#include <level.h>
 
 void rs_manager_init(void);
 void rs_manager_close(void);
@@ -11,5 +12,7 @@ SDL_Texture* rs_manager_get_texture(char* str);
 
 void rs_manager_add_bmp_font(char* name, bmp_font_t* font);
 bmp_font_t* rs_manager_get_bmp_font(char* name);
+
+level_t* rs_manager_get_level(char* str);
 
 #endif

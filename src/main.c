@@ -5,9 +5,14 @@
 #include <render.h>
 #include <movement.h>
 #include <input.h>
+#include <level.h>
+#include <rs_manager.h>
 
 void load(void) {
     unsigned int ent;
+    level_t* lvl = rs_manager_get_level("test_level");
+
+    printf("%s\n", lvl->data);
     
     install_bmp_font("font", 8, 8, 1, 1, "font");
 
@@ -30,19 +35,6 @@ void load(void) {
     mgr_add_component(ent, render_texture_new("simple_grass"));
     mgr_add_component(ent, wall_new());
     mgr_register(ent);
-
-    /*
-    ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(300, 200, 64, 64));
-    mgr_add_component(ent, render_texture_new("circle"));
-    mgr_register(ent);
-
-    ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(100, 400, 16, 20));
-    mgr_add_component(ent, render_string_new("font", "Hola que tal"));
-    mgr_add_component(ent, velocity_new(100.0f, 0.0f));
-    mgr_register(ent);
-    */
 }
 
 int main() {
