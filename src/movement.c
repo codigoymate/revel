@@ -25,6 +25,10 @@ void velocity(iterator_t* iter) {
 		velocity_t* vc = (velocity_t*) mgr_get_component(e, VELOCITY);
 		iterator_t* walls =  mgr_get_system_iterator("wall");
 
+		if (mgr_has_component(e, GRAVITY)) {
+			vc->y += 3;
+		}
+
 		// Backup
 		xb = tc->x;
 		yb = tc->y;
@@ -52,7 +56,9 @@ void velocity(iterator_t* iter) {
 				ew = *(unsigned int *) iterator_next(walls);
 				tcw = (transform_t*) mgr_get_component(ew, TRANSFORM);
 				if (aabb(tc, tcw)) {
-					tc->y = yb; break;
+					tc->y = yb;
+					vc->y = 0;
+					break;
 				}
 			}
 		}

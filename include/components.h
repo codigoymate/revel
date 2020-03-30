@@ -7,6 +7,7 @@
 #define CONTROL			8
 #define WALL			16
 #define SOLID			32
+#define GRAVITY 		64
 
 #define RENDER_TEXTURE		0
 #define RENDER_STRING		1
@@ -76,4 +77,9 @@ typedef struct {
 
 component_t* solid_new(void);
 
+typedef struct {
+	component_t base;
+} gravity_t;
+
+component_t* gravity_new(void);
 #endif

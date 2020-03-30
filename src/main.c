@@ -22,11 +22,12 @@ void load(void) {
     mgr_add_component(ent, render_texture_new("circle"));
     mgr_add_component(ent, velocity_new(0.0f, 0.0f));
     mgr_add_component(ent, solid_new());
+    mgr_add_component(ent, gravity_new());
     mgr_add_component(ent, control_new());
     mgr_register(ent);
 
     ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(600, 600, 64, 64));
+    mgr_add_component(ent, transform_new(500, 600, 64, 64));
     mgr_add_component(ent, render_texture_new("simple_grass"));
     mgr_add_component(ent, wall_new());
     mgr_register(ent);
@@ -66,15 +67,15 @@ int main() {
                 quit = 1;
             } else if (e.type == SDL_KEYDOWN) {
                 switch (e.key.keysym.sym) {
-                case SDLK_UP: key_status.up = 1; break;
-                case SDLK_DOWN: key_status.down = 1; break;
+                /*case SDLK_UP: key_status.up = 1; break;
+                case SDLK_DOWN: key_status.down = 1; break;*/
                 case SDLK_LEFT: key_status.left = 1; break;
                 case SDLK_RIGHT: key_status.right = 1; break;
                 }
             } else if (e.type == SDL_KEYUP) {
                 switch (e.key.keysym.sym) {
-                case SDLK_UP: key_status.up = 0; break;
-                case SDLK_DOWN: key_status.down = 0; break;
+                /*ase SDLK_UP: key_status.up = 0; break;
+                case SDLK_DOWN: key_status.down = 0; break;*/
                 case SDLK_LEFT: key_status.left = 0; break;
                 case SDLK_RIGHT: key_status.right = 0; break;
                 }

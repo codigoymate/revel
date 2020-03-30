@@ -62,3 +62,10 @@ component_t* solid_new(void) {
 
 	return (component_t*) comp;
 }
+
+component_t* gravity_new(void) {
+	gravity_t* comp = (gravity_t*) malloc(sizeof(gravity_t));
+	comp->base.id = GRAVITY;
+
+	return (component_t*) comp;
+}

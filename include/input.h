@@ -4,7 +4,7 @@
 #include <list.h>
 
 typedef struct  {
-	int left, right, down, up;
+	int left, right/*, down, up*/;
 } key_status_t;
 
 extern key_status_t key_status;
