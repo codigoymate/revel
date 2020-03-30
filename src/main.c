@@ -9,12 +9,8 @@
 #include <rs_manager.h>
 
 void load(void) {
-    unsigned int ent;
-    level_t* lvl = rs_manager_get_level("test_level");
-
-    printf("%s\n", lvl->data);
     
-    install_bmp_font("font", 8, 8, 1, 1, "font");
+    //install_bmp_font("font", 8, 8, 1, 1, "font");
 
     mgr_add_system("render", TRANSFORM | RENDER, render); // render.h
     mgr_add_system("velocity", TRANSFORM | VELOCITY, velocity); // movement.h
@@ -22,7 +18,9 @@ void load(void) {
     mgr_add_system("wall", TRANSFORM | WALL, NULL);
     
 
-    ent = mgr_new_entity();
+    load_level("test_level");
+
+    /*ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(500, 100, 64, 64));
     mgr_add_component(ent, render_texture_new("circle"));
     mgr_add_component(ent, velocity_new(0.0f, 0.0f));
@@ -34,7 +32,7 @@ void load(void) {
     mgr_add_component(ent, transform_new(600, 600, 64, 64));
     mgr_add_component(ent, render_texture_new("simple_grass"));
     mgr_add_component(ent, wall_new());
-    mgr_register(ent);
+    mgr_register(ent);*/
 }
 
 int main() {

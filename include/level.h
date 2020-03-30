@@ -9,4 +9,6 @@ typedef struct {
 level_t* level_load_from_file(char* filename);
 void level_destroy(level_t* level);
 
+void load_level(char* level);
+
 #endif
