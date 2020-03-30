@@ -45,6 +45,7 @@ component_t* velocity_new(float x, float y) {
 component_t* control_new(void) {
 	control_t* comp = (control_t*) malloc(sizeof(control_t));
 	comp->base.id = CONTROL;
+	comp->in_air = 1;
 
 	return (component_t*)comp;
 }

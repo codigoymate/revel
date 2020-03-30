@@ -20,6 +20,7 @@ void control(iterator_t* iter) {
 	while (iterator_has_next(iter)) {
 		unsigned int e = *(unsigned int*) iterator_next(iter);
 		velocity_t* vc = (velocity_t*) mgr_get_component(e, VELOCITY);
+		control_t* cc = (control_t*) mgr_get_component(e, CONTROL);
 
 		if (key_status.left) vc->x = -CONTROL_VELOCITY;
 		else if (key_status.right) vc->x = CONTROL_VELOCITY;
@@ -28,8 +29,11 @@ void control(iterator_t* iter) {
 		if (key_status.space) {
 			if (!key_status.l_space) {
 				// Jump
-				vc->y = -JUMP_VELOCITY;
-				key_status.l_space = 1;
+				if (!cc->in_air) {
+					vc->y = -JUMP_VELOCITY;
+					cc->in_air = 1;
+					key_status.l_space = 1;
+				}
 			}
 		} else {
 			key_status.l_space = 0;

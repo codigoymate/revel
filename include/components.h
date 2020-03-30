@@ -61,6 +61,7 @@ component_t* velocity_new(float x, float y);
 
 typedef struct {
 	component_t base;
+	int in_air;
 } control_t;
 
 component_t* control_new(void);

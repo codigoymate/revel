@@ -58,6 +58,11 @@ void velocity(iterator_t* iter) {
 				if (aabb(tc, tcw)) {
 					tc->y = yb;
 					vc->y = 0;
+					// In air flag
+					if (mgr_has_component(e, CONTROL)) {
+						control_t* cc = (control_t*) mgr_get_component(e, CONTROL);
+						cc->in_air = 0;
+					}
 					break;
 				}
 			}
