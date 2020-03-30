@@ -3,6 +3,9 @@
 
 #include <SDL2/SDL.h>
 
+#define WINDOW_WIDTH	1366
+#define WINDOW_HEIGHT	768
+
 extern SDL_Renderer* renderer;
 extern double delta_time;
 

@@ -5,16 +5,18 @@
 #include <render.h>
 #include <movement.h>
 #include <input.h>
+#include <camera.h>
 
 void load(void) {
     unsigned int ent;
     
-    install_bmp_font("font", 8, 8, 1, 1, "font");
+    //install_bmp_font("font", 8, 8, 1, 1, "font");
 
-    mgr_add_system("render", TRANSFORM | RENDER, render); // render.h
     mgr_add_system("velocity", TRANSFORM | VELOCITY, velocity); // movement.h
     mgr_add_system("control", TRANSFORM | VELOCITY | CONTROL, control); // input.h
     mgr_add_system("wall", TRANSFORM | WALL, NULL);
+    mgr_add_system("camera", TRANSFORM, process_camera); // camera.h
+    mgr_add_system("render", TRANSFORM | RENDER, render); // render.h
     
 
     ent = mgr_new_entity();
@@ -25,6 +27,7 @@ void load(void) {
     mgr_add_component(ent, gravity_new());
     mgr_add_component(ent, control_new());
     mgr_register(ent);
+    camera_focus = ent;
 
     ent = mgr_new_entity();
     mgr_add_component(ent, transform_new(500, 600, 64, 64));

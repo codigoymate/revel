@@ -24,8 +24,7 @@ int revel_init(void) {
 	window = SDL_CreateWindow("Revel",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		//1366, 768, SDL_WINDOW_SHOWN);
-		1366, 768, SDL_WINDOW_FULLSCREEN);
+		WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN);
 
 	if (window == NULL) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
