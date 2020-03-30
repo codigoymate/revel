@@ -67,17 +67,15 @@ int main() {
                 quit = 1;
             } else if (e.type == SDL_KEYDOWN) {
                 switch (e.key.keysym.sym) {
-                /*case SDLK_UP: key_status.up = 1; break;
-                case SDLK_DOWN: key_status.down = 1; break;*/
                 case SDLK_LEFT: key_status.left = 1; break;
                 case SDLK_RIGHT: key_status.right = 1; break;
+                case SDLK_SPACE: key_status.space = 1; break;
                 }
             } else if (e.type == SDL_KEYUP) {
                 switch (e.key.keysym.sym) {
-                /*ase SDLK_UP: key_status.up = 0; break;
-                case SDLK_DOWN: key_status.down = 0; break;*/
                 case SDLK_LEFT: key_status.left = 0; break;
                 case SDLK_RIGHT: key_status.right = 0; break;
+                case SDLK_SPACE: key_status.space = 0; break;
                 }
             }
         }
