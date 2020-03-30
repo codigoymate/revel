@@ -6,9 +6,10 @@
 #include <movement.h>
 #include <input.h>
 #include <camera.h>
+#include <level.h>
+#include <rs_manager.h>
 
 void load(void) {
-    unsigned int ent;
     
     //install_bmp_font("font", 8, 8, 1, 1, "font");
 
@@ -19,34 +20,8 @@ void load(void) {
     mgr_add_system("render", TRANSFORM | RENDER, render); // render.h
     
 
-    ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(500, 100, 64, 64));
-    mgr_add_component(ent, render_texture_new("circle"));
-    mgr_add_component(ent, velocity_new(0.0f, 0.0f));
-    mgr_add_component(ent, solid_new());
-    mgr_add_component(ent, gravity_new());
-    mgr_add_component(ent, control_new());
-    mgr_register(ent);
-    camera_focus = ent;
+    load_level("test_level");
 
-    ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(500, 600, 64, 64));
-    mgr_add_component(ent, render_texture_new("simple_grass"));
-    mgr_add_component(ent, wall_new());
-    mgr_register(ent);
-
-    /*
-    ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(300, 200, 64, 64));
-    mgr_add_component(ent, render_texture_new("circle"));
-    mgr_register(ent);
-
-    ent = mgr_new_entity();
-    mgr_add_component(ent, transform_new(100, 400, 16, 20));
-    mgr_add_component(ent, render_string_new("font", "Hola que tal"));
-    mgr_add_component(ent, velocity_new(100.0f, 0.0f));
-    mgr_register(ent);
-    */
 }
 
 int main() {
