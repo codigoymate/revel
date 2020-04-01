@@ -24,7 +24,7 @@ void load(void) {
 
 }
 
-int main() {
+int main(int argc, char** argv) {
 
 	int quit = 0;
 	SDL_Event e;
