@@ -3,11 +3,11 @@
 #include <hash.h>
 #include <revel.h>
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
 #include <SDL2/SDL_image.h>
-
 
 str_hash_table_t* textures;
 str_hash_table_t* fonts;

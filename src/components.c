@@ -1,6 +1,7 @@
 #include <components.h>
 
 #include <stdlib.h>
+#include <string.h>
 #include <rs_manager.h>
 
 component_t* transform_new(float x, float y, int w, int h) {
