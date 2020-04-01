@@ -9,6 +9,8 @@
 #include <level.h>
 #include <rs_manager.h>
 
+#define FPS     120
+
 void load(void) {
     
     //install_bmp_font("font", 8, 8, 1, 1, "font");
@@ -24,9 +26,22 @@ void load(void) {
 
 }
 
+/*int t;
+while (run) {
+    t = SDL_GetTicks ();
+    // ...
+    t = SDL_GetTicks () - t;
+
+    // if the framerate is too high
+    if (t < 1000 / FPS) {
+        // compute the difference to have a total frame time of 1000 / FPS
+        SDL_Delay ((1000 / FPS) - t);
+    }
+}*/
+
 int main(int argc, char** argv) {
 
-	int quit = 0;
+	int quit = 0, time;
 	SDL_Event e;
     Uint64 now = SDL_GetPerformanceCounter();
     Uint64 last = 0;
@@ -58,6 +73,8 @@ int main(int argc, char** argv) {
             }
         }
 
+        time = SDL_GetTicks();
+
         last = now;
         now = SDL_GetPerformanceCounter();
 
@@ -72,6 +89,11 @@ int main(int argc, char** argv) {
 
         //Update screen
         SDL_RenderPresent(renderer);
+
+        time = SDL_GetTicks() - time;
+
+        if (time < 1000 / FPS)
+            SDL_Delay ((1000 / FPS) - time);
     }
 
 	revel_close();

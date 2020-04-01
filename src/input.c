@@ -4,7 +4,7 @@
 #include <manager.h>
 
 #define CONTROL_VELOCITY 		300
-#define JUMP_VELOCITY			1000
+#define JUMP_VELOCITY			500
 
 key_status_t key_status;
 

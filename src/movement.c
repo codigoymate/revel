@@ -26,7 +26,7 @@ void velocity(iterator_t* iter) {
 		iterator_t* walls =  mgr_get_system_iterator("wall");
 
 		if (mgr_has_component(e, GRAVITY)) {
-			vc->y += 3;
+			vc->y += 7;
 		}
 
 		// Backup
